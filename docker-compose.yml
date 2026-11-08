@@ -1,0 +1,11 @@
+services:
+  pr-reviewer:
+    build: .
+    container_name: github-pr-reviewer
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+    env_file:
+      - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
